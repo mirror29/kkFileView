@@ -12,10 +12,38 @@
         .container {
             width: 100%;
             height: 100%;
+            padding-left:0;
+            padding-right:0;
         }
         .img-area {
-            text-align: center
+            text-align: center;
         }
+        .my-photo{
+            width: 100%;
+        }
+        /*- scrollbar -*/
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #999;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:vertical:hover {
+            background-color: #666;
+        }
+        ::-webkit-scrollbar-thumb:vertical:active {
+            background-color: #333;
+        }
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+        /*- scrollbar -*/
 
     </style>
 </head>
@@ -28,7 +56,7 @@
     </#list>
 </div>
 <#if "false" == switchDisabled>
-    <img src="images/pdf.svg" width="63" height="63" style="position: fixed; cursor: pointer; top: 40%; right: 48px; z-index: 999;" alt="使用PDF预览" title="使用PDF预览" onclick="changePreviewType('pdf')"/>
+    <img src="images/pdf.svg" width="63" height="63" style="position: fixed; cursor: pointer; top: 4%; right: 20px; z-index: 999;" alt="使用PDF预览" title="使用PDF预览" onclick="changePreviewType('pdf')"/>
 </#if>
 <script>
     window.onload = function () {
@@ -36,7 +64,8 @@
         initWaterMark();
         checkImgs();
     };
-    window.onscroll = throttle(checkImgs);
+    window.onscroll = throttle(checkImgs)
+
     function changePreviewType(previewType) {
         var url = window.location.href;
         if (url.indexOf("officePreviewType=image") !== -1) {

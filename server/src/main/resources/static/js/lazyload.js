@@ -52,6 +52,8 @@ function throttle(fn) {
         if (!previous) {
             previous = now;
         }
+        var scrollTop = document.documentElement.scrollTop
+        window.parent.postMessage(scrollTop, '*');
         var remaining = now - previous;
         setTimeout(refresh(fn, remaining, context, args, previous, now));
     }
